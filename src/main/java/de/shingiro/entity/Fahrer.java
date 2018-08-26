@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- * Persistence class for child object
+ * Persistence class for driver object
  * 
  * @author a.shingiro
  *
@@ -25,7 +25,7 @@ import javax.validation.constraints.Size;
 @Entity
 @NamedQueries({
 	@NamedQuery(name = "Fahrer.findAll", query = "SELECT f FROM Fahrer f"),
-	@NamedQuery(name = "Fahrer.findById", query = "SELECT f FROM Fahrer f WHERE f.id = :id")
+	@NamedQuery(name = "Fahrer.findById", query = "SELECT f FROM Fahrer f WHERE f.fahrerId = :fahrerId")
 })
 public class Fahrer implements Serializable {
 	
@@ -40,7 +40,7 @@ public class Fahrer implements Serializable {
 	}
 
 	@Id
-	private Long id;
+	private Long fahrerId;
 
 	@NotNull
 	private String vorname;
@@ -81,12 +81,12 @@ public class Fahrer implements Serializable {
 		this.telefonnummer = telefonnummer;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getFahrerId() {
+		return fahrerId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setFahrerId(Long fahrerId) {
+		this.fahrerId = fahrerId;
 	}
 
 	public String getNachricht() {
@@ -109,7 +109,7 @@ public class Fahrer implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((fahrerId == null) ? 0 : fahrerId.hashCode());
 		result = prime * result + ((nachname == null) ? 0 : nachname.hashCode());
 		result = prime * result + ((nachricht == null) ? 0 : nachricht.hashCode());
 		result = prime * result + ((telefonnummer == null) ? 0 : telefonnummer.hashCode());
@@ -127,10 +127,10 @@ public class Fahrer implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Fahrer other = (Fahrer) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (fahrerId == null) {
+			if (other.fahrerId != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!fahrerId.equals(other.fahrerId))
 			return false;
 		if (nachname == null) {
 			if (other.nachname != null)

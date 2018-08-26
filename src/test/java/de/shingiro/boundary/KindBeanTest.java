@@ -47,7 +47,7 @@ public class KindBeanTest {
 	private TypedQuery<Fahrer> query;
 	
 	@InjectMocks
-	private KindBean kindBean;
+	private FahrerBean kindBean;
 	
 	@Test
 	public void testFindAll() {

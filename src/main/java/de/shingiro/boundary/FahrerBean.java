@@ -16,59 +16,59 @@ import javax.persistence.TypedQuery;
 import de.shingiro.entity.Fahrer;
 
 /**
- *  Bean class for Kind entity
+ *  Bean class for Fahrer entity
  * 
  * @author a.shingiro
  *
  */
 @Stateless
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
-public class KindBean implements KindService {
+public class FahrerBean implements FahrerService {
 	
-	@PersistenceContext(unitName = "KIWIDB")
+	@PersistenceContext(unitName = "travelAppDB")
 	private EntityManager entityManager;
 	
 	
-	public KindBean() {
+	public FahrerBean() {
 		// TODO Auto-generated constructor stub
 	}
 	/**
-	 *  Find all kids in the database
-	 * @return List of all kids in the database
+	 *  Find all drivers in the database
+	 * @return List of all drivers in the database
 	 */
-	public List<Fahrer> findKinder() {
+	public List<Fahrer> findFahrer() {
 		TypedQuery<Fahrer> query = entityManager.createNamedQuery(Fahrer.FIND_ALL, Fahrer.class);
 		return query.getResultList();
 	}
 	
 	/**
-	 *  Find a specific kid through its ID
-	 * @param kindId
-	 * @return Kind a specific kid
+	 *  Find a specific driver through its ID
+	 * @param fahrerId
+	 * @return fahrer a specific driver
 	 */
-	public Fahrer findKind(Long kindId) {
-		return entityManager.find(Fahrer.class, kindId);
+	public Fahrer findFahrer(Long fahrerId) {
+		return entityManager.find(Fahrer.class, fahrerId);
 	}
 	
 	/**
-	 * Create a kid instance in the database
+	 * Create a driver instance in the database
 	 * 
-	 * @param kind
-	 * @return Kind the created kid instance
+	 * @param fahrer
+	 * @return driver the created driver instance
 	 */
-	public Fahrer createKind(Fahrer kind) {
-		entityManager.persist(kind);
-		return kind; 
+	public Fahrer createFahrer(Fahrer fahrer) {
+		entityManager.persist(fahrer);
+		return fahrer; 
 	}
 	
 	/** 
-	 * Remove a kid permanently from the database
+	 * Remove a driver permanently from the database
 	 * Only admin is allowed to perform this operation
 	 * 
-	 * @param kind 
+	 * @param fahrer 
 	 */
 	@RolesAllowed("admin")
-	public void deleteKind(Fahrer kind) {
-		entityManager.remove(entityManager.merge(kind));
+	public void deleteFahrer(Fahrer fahrer) {
+		entityManager.remove(entityManager.merge(fahrer));
 	}
 }

@@ -31,21 +31,21 @@ import de.shingiro.entity.Fahrer;
  * @author a.shingiro
  *
  */
-@Path("/kinder")
+@Path("/fahrer")
 @Transactional
-public class KindResource {
+public class FahrerResource {
 	
 	@Context
 	private UriInfo uriInfo;
 	
-	@PersistenceContext(unitName = "KIWIDB")
+	@PersistenceContext(unitName = "traveAppDB")
 	private EntityManager entityManager;
 	
 	@Inject
-	private KindService kindService;
+	private FahrerService fahrerService;
 	
 	
-	public KindResource() {
+	public FahrerResource() {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -53,23 +53,23 @@ public class KindResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Transactional(Transactional.TxType.SUPPORTS)
 	public List<Fahrer> findeAlleKinder() {
-		return kindService.findKinder();
+		return fahrerService.findFahrer();
 	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/kind/{kindId}")
-	public Fahrer findeKind(@PathParam("kindId") Long kindId) {
-		return kindService.findKind(kindId);
+	@Path("/fahrer/{fahrerId}")
+	public Fahrer findeKind(@PathParam("fahrerId") Long fahrerId) {
+		return fahrerService.findFahrer(fahrerId);
 	}
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/neuesKind")
-	public Response legeKindAn( Fahrer kind) {
-		entityManager.persist(kind);
-		URI kindURI = uriInfo.getAbsolutePathBuilder().path(kind.getKindId().toString()).build();
+	@Path("/neuerFahrer")
+	public Response legeFahrerAn( Fahrer fahrer) {
+		entityManager.persist(fahrer);
+		URI kindURI = uriInfo.getAbsolutePathBuilder().path(fahrer.getFahrerId().toString()).build();
 		return Response.created(kindURI).build();
 	}
 }

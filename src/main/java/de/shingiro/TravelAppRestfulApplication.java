@@ -9,7 +9,7 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-import de.shingiro.boundary.KindResource;
+import de.shingiro.boundary.FahrerResource;
 
 /**
  * @author a.shingiro
@@ -25,7 +25,7 @@ public class TravelAppRestfulApplication extends Application {
 		classes.add(TravelAppRestCorsFilter.class);
 		
 		// register Kind resource
-		classes.add(KindResource.class);
+		classes.add(FahrerResource.class);
 		
 		return classes;
 	}
