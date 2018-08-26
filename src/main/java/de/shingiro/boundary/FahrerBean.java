@@ -37,7 +37,7 @@ public class FahrerBean implements FahrerService {
 	 * @return List of all drivers in the database
 	 */
 	public List<Fahrer> findFahrer() {
-		TypedQuery<Fahrer> query = entityManager.createNamedQuery(Fahrer.FIND_ALL, Fahrer.class);
+		TypedQuery<Fahrer> query = entityManager.createNamedQuery("Fahrer.FIND_ALL", Fahrer.class);
 		return query.getResultList();
 	}
 	

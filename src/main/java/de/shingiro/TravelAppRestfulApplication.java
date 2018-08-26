@@ -24,7 +24,7 @@ public class TravelAppRestfulApplication extends Application {
 		//register CORS filter
 		classes.add(TravelAppRestCorsFilter.class);
 		
-		// register Kind resource
+		// register Fahrer resource
 		classes.add(FahrerResource.class);
 		
 		return classes;
