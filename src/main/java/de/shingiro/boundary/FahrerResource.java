@@ -52,14 +52,14 @@ public class FahrerResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Transactional(Transactional.TxType.SUPPORTS)
-	public List<Fahrer> findeAlleKinder() {
+	public List<Fahrer> findeAlleFahrer() {
 		return fahrerService.findFahrer();
 	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/fahrer/{fahrerId}")
-	public Fahrer findeKind(@PathParam("fahrerId") Long fahrerId) {
+	public Fahrer findeFahrer(@PathParam("fahrerId") Long fahrerId) {
 		return fahrerService.findFahrer(fahrerId);
 	}
 	
