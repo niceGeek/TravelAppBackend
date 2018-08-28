@@ -38,7 +38,7 @@ public class FahrerResource {
 	@Context
 	private UriInfo uriInfo;
 	
-	@PersistenceContext(unitName = "traveAppDB")
+	@PersistenceContext(unitName = "travelAppDB")
 	private EntityManager entityManager;
 	
 	@Inject
