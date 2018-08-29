@@ -58,7 +58,7 @@ public class FahrerResource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/fahrer/{fahrerId}")
+	@Path("/{fahrerId}")
 	public Fahrer findeFahrer(@PathParam("fahrerId") Long fahrerId) {
 		return fahrerService.findFahrer(fahrerId);
 	}
