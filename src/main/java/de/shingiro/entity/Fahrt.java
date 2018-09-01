@@ -39,7 +39,7 @@ public class Fahrt implements Serializable {
 	@NotNull
 	public String destination;
 
-	@Size(min = 10, max = 240)
+	@Size(min = 0, max = 240)
 	public String description;
 
 	public Long getFahrtId() {

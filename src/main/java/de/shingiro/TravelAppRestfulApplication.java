@@ -10,6 +10,7 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 import de.shingiro.boundary.FahrerResource;
+import de.shingiro.boundary.FahrtResource;
 
 /**
  * @author a.shingiro
@@ -26,6 +27,9 @@ public class TravelAppRestfulApplication extends Application {
 		
 		// register Fahrer resource
 		classes.add(FahrerResource.class);
+		
+		// register Fahrt resource
+		classes.add(FahrtResource.class);
 		
 		return classes;
 	}

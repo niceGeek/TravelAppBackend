@@ -51,7 +51,7 @@ public class Fahrer implements Serializable {
 	@NotNull
 	private String telefonnummer;
 
-	@Size(min = 10, max = 240)
+	@Size(min = 0, max = 240)
 	private String nachricht;
 	
 	@NotNull

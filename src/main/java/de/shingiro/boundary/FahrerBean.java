@@ -34,7 +34,7 @@ public class FahrerBean implements FahrerService {
 	}
 	/**
 	 *  Find all drivers in the database
-	 * @return List of all drivers in the database
+	 * @return {@link List<Fahrer>} a list of all drivers in the database
 	 */
 	public List<Fahrer> findFahrer() {
 		TypedQuery<Fahrer> query = entityManager.createNamedQuery(Fahrer.FIND_ALL, Fahrer.class);
@@ -44,7 +44,7 @@ public class FahrerBean implements FahrerService {
 	/**
 	 *  Find a specific driver through its ID
 	 * @param fahrerId
-	 * @return fahrer a specific driver
+	 * @return {@link Fahrer} a specific driver
 	 */
 	public Fahrer findFahrer(Long fahrerId) {
 		return entityManager.find(Fahrer.class, fahrerId);
@@ -54,7 +54,7 @@ public class FahrerBean implements FahrerService {
 	 * Create a driver instance in the database
 	 * 
 	 * @param fahrer
-	 * @return driver the created driver instance
+	 * @return {@link Fahrer} the created driver instance
 	 */
 	public Fahrer createFahrer(Fahrer fahrer) {
 		entityManager.persist(fahrer);

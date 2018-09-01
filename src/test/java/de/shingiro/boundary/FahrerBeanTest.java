@@ -37,9 +37,9 @@ import de.shingiro.entity.Fahrer;
  * @author a.shingiro
  *
  */
-@RunWith(MockitoJUnitRunner.class)
-public class KindBeanTest {
-	
+//@RunWith(MockitoJUnitRunner.class)
+public class FahrerBeanTest {
+	/*
 	@Mock
 	private EntityManager entityManager;
 	
@@ -47,16 +47,15 @@ public class KindBeanTest {
 	private TypedQuery<Fahrer> query;
 	
 	@InjectMocks
-	private FahrerBean kindBean;
-	
+	private FahrerBean fahrerBean;
+	*/
+	/*
 	@Test
-	public void testFindAll() {
+	public void testFindAllFahrer() {
 		
-		List<Fahrer> mockKinder = new ArrayList<>();
-		
-		//when(entityManager.createNamedQuery("Kind.FIND_ALL", Kind.class).getResultList()).thenReturn(mockKinder);
+		System.out.println("TODO: Implement me!");
 	}
-	
+	*/
 	
 	/*
 	
