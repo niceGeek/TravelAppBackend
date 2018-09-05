@@ -38,9 +38,6 @@ public class FahrerResource {
 	@Context
 	private UriInfo uriInfo;
 	
-	@PersistenceContext(unitName = "travelAppDB")
-	private EntityManager entityManager;
-	
 	@Inject
 	private FahrerService fahrerService;
 	
@@ -67,9 +64,9 @@ public class FahrerResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/neuerFahrer")
-	public Response legeFahrerAn( Fahrer fahrer) {
-		entityManager.persist(fahrer);
-		URI kindURI = uriInfo.getAbsolutePathBuilder().path(fahrer.getFahrerId().toString()).build();
-		return Response.created(kindURI).build();
+	public Response legeFahrerAn(Fahrer fahrer) {
+		fahrerService.createFahrer(fahrer);
+		URI fahrerURI = uriInfo.getAbsolutePathBuilder().path(fahrer.getFahrerId().toString()).build();
+		return Response.created(fahrerURI).build();
 	}
 }

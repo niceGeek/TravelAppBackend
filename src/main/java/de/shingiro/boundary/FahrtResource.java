@@ -31,9 +31,6 @@ public class FahrtResource {
 	@Context
 	private UriInfo uriInfo;
 	
-	@PersistenceContext(name="travelAppDB")
-	private EntityManager entityManager;
-	
 	@Inject
 	private FahrtService fahrtService;
 

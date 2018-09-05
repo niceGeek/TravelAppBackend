@@ -21,7 +21,7 @@ public interface FahrerService {
 	
 	public Fahrer findFahrer(Long fahrerId);
 	
-	public @NotNull Fahrer createFahrer(@NotNull Fahrer fahrerId);
+	public @NotNull Fahrer createFahrer(@NotNull Fahrer fahrer);
 	
 	public void deleteFahrer(@NotNull Fahrer fahrerId);
 
