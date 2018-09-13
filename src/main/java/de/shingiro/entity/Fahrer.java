@@ -62,14 +62,6 @@ public class Fahrer implements Serializable {
 	@ManyToOne
 	private Fahrt fahrt;
 
-	public Long getFahrerId() {
-		return fahrerId;
-	}
-
-	public void setFahrerId(Long fahrerId) {
-		this.fahrerId = fahrerId;
-	}
-
 	public String getVorname() {
 		return vorname;
 	}
