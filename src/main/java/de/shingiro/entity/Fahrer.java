@@ -24,8 +24,9 @@ import javax.validation.constraints.Size;
  *
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = "Fahrer.findAll", query = "SELECT f FROM Fahrer f"),
-		@NamedQuery(name = "Fahrer.findById", query = "SELECT f FROM Fahrer f WHERE f.fahrerId = :fahrerId") })
+@NamedQueries({ 
+	@NamedQuery(name = "Fahrer.findAll", query = "SELECT f FROM Fahrer f"),
+	@NamedQuery(name = "Fahrer.findById", query = "SELECT f FROM Fahrer f WHERE f.fahrerId = :fahrerId") })
 public class Fahrer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -39,6 +40,8 @@ public class Fahrer implements Serializable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fahrerSeq")
+	@SequenceGenerator(name="fahrerSeq", sequenceName = "fahrerSeq", initialValue = 1, allocationSize = 100)
 	private Long fahrerId;
 
 	@NotNull
