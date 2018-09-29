@@ -3,7 +3,7 @@
  */
 package de.shingiro.boundary;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.security.RolesAllowed;
@@ -71,8 +71,8 @@ public class FahrerBean implements FahrerService {
 	 * 
 	 * @return Fahrer the corresponding driver
 	 */
-	public List<Fahrer> getFahrerByParams(String abfahrtsort, String ankunftsort, String abfahrtszeit) {
-		Query query = entityManager.createNamedQuery(Fahrer.FIND_BY_REQ_PARAMS)
+	public List<Fahrer> getFahrerByParams(String abfahrtsort, String ankunftsort, Date abfahrtszeit) {
+		TypedQuery<Fahrer> query = entityManager.createNamedQuery(Fahrer.FIND_BY_REQ_PARAMS, Fahrer.class)
 									 .setParameter("abfahrtsort", abfahrtsort)
 									 .setParameter("ankunftsort", ankunftsort)
 									 .setParameter("abfahrtszeit", abfahrtszeit);

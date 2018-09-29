@@ -27,7 +27,7 @@ import javax.validation.constraints.Size;
 @NamedQueries({ @NamedQuery(name = "Fahrer.findAll", query = "SELECT f FROM Fahrer f"),
 		@NamedQuery(name = "Fahrer.findById", query = "SELECT f FROM Fahrer f WHERE f.fahrerId = :fahrerId"),
 		@NamedQuery(name = "Fahrer.findByReqParams", query = "SELECT f FROM Fahrer f WHERE f.abfahrtsort = :abfahrtsort "
-				+ "AND f.ankunftsort = :ankunftsort AND f.abfahrtzeit = :abfahrtzeit") })
+				+ "AND f.ankunftsort = :ankunftsort AND f.abfahrtszeit = :abfahrtszeit") })
 public class Fahrer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -66,7 +66,7 @@ public class Fahrer implements Serializable {
 	private String ankunftsort;
 
 	@NotNull
-	private Date abfahrtzeit;
+	private Date abfahrtszeit;
 
 	public Long getFahrerId() {
 		return fahrerId;
@@ -124,12 +124,12 @@ public class Fahrer implements Serializable {
 		this.ankunftsort = ankunftsort;
 	}
 
-	public Date getAbfahrtzeit() {
-		return abfahrtzeit;
+	public Date getAbfahrtszeit() {
+		return abfahrtszeit;
 	}
 
-	public void setAbfahrtzeit(Date abfahrtzeit) {
-		this.abfahrtzeit = abfahrtzeit;
+	public void setAbfahrtszeit(Date abfahrtszeit) {
+		this.abfahrtszeit = abfahrtszeit;
 	}
 
 	public static long getSerialversionuid() {
@@ -140,7 +140,7 @@ public class Fahrer implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((abfahrtzeit == null) ? 0 : abfahrtzeit.hashCode());
+		result = prime * result + ((abfahrtszeit == null) ? 0 : abfahrtszeit.hashCode());
 		result = prime * result + ((abfahrtsort == null) ? 0 : abfahrtsort.hashCode());
 		result = prime * result + ((ankunftsort == null) ? 0 : ankunftsort.hashCode());
 		result = prime * result + ((fahrerId == null) ? 0 : fahrerId.hashCode());
@@ -160,10 +160,10 @@ public class Fahrer implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Fahrer other = (Fahrer) obj;
-		if (abfahrtzeit == null) {
-			if (other.abfahrtzeit != null)
+		if (abfahrtszeit == null) {
+			if (other.abfahrtszeit != null)
 				return false;
-		} else if (!abfahrtzeit.equals(other.abfahrtzeit))
+		} else if (!abfahrtszeit.equals(other.abfahrtszeit))
 			return false;
 		if (abfahrtsort == null) {
 			if (other.abfahrtsort != null)

@@ -5,6 +5,7 @@ package de.shingiro.boundary;
 
 import java.net.URI;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.annotation.RequestParameterMap;
@@ -80,7 +81,7 @@ public class FahrerResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/findeFahrt")
 	public List<Fahrer> getFahrerByParams(@QueryParam("abfahrtsort") String abfahrtsort, 
-			@QueryParam("ankunftsort") String ankunftsort, @QueryParam("abfahrtszeit") String abfahrtszeit) {
+			@QueryParam("ankunftsort") String ankunftsort, @QueryParam("abfahrtszeit") Date abfahrtszeit) {
 		return fahrerService.getFahrerByParams(abfahrtsort, ankunftsort, abfahrtszeit);
 	}
 

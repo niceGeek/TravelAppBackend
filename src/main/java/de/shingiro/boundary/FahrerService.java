@@ -3,7 +3,7 @@
  */
 package de.shingiro.boundary;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -25,7 +25,7 @@ public interface FahrerService {
 	public @NotNull Fahrer createFahrer(@NotNull Fahrer fahrer);
 	
 	public List<Fahrer> getFahrerByParams(@NotNull String abfahrtsort, 
-			@NotNull String ankunftsort, @NotNull String abfahrtszeit);
+			@NotNull String ankunftsort, @NotNull Date abfahrtszeit);
 	
 	public void deleteFahrer(@NotNull Fahrer fahrerId);
 
