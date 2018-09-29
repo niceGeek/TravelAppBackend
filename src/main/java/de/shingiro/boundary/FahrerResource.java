@@ -4,19 +4,24 @@
 package de.shingiro.boundary;
 
 import java.net.URI;
+import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.faces.annotation.RequestParameterMap;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -69,4 +74,20 @@ public class FahrerResource {
 		URI fahrerURI = uriInfo.getAbsolutePathBuilder().path(fahrer.getFahrerId().toString()).build();
 		return Response.created(fahrerURI).build();
 	}
+	
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/findeFahrt")
+	public List<Fahrer> getFahrerByParams(@QueryParam("abfahrtsort") String abfahrtsort, 
+			@QueryParam("ankunftsort") String ankunftsort, @QueryParam("abfahrtszeit") String abfahrtszeit) {
+		return fahrerService.getFahrerByParams(abfahrtsort, ankunftsort, abfahrtszeit);
+	}
+
+//	
+//	@DELETE
+//	@Path("{id}")
+//	public Response loescheFahrer(Long fahrerId) {
+//		fahrerService.deleteFahrer(fahrerId);
+//	}
 }

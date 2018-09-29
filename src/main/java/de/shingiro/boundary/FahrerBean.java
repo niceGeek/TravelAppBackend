@@ -3,6 +3,7 @@
  */
 package de.shingiro.boundary;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.annotation.security.RolesAllowed;
@@ -11,6 +12,7 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import de.shingiro.entity.Fahrer;
@@ -59,6 +61,22 @@ public class FahrerBean implements FahrerService {
 	public Fahrer createFahrer(Fahrer fahrer) {
 		entityManager.persist(fahrer);
 		return fahrer; 
+	}
+	
+	/**
+	 * Fetch datasets from DB using many request parameters
+	 * @param abfahrtsort departure
+	 * @param ankunftsort destination
+	 * @param abfahrtszeit date and time
+	 * 
+	 * @return Fahrer the corresponding driver
+	 */
+	public List<Fahrer> getFahrerByParams(String abfahrtsort, String ankunftsort, String abfahrtszeit) {
+		Query query = entityManager.createNamedQuery(Fahrer.FIND_BY_REQ_PARAMS)
+									 .setParameter("abfahrtsort", abfahrtsort)
+									 .setParameter("ankunftsort", ankunftsort)
+									 .setParameter("abfahrtszeit", abfahrtszeit);
+		return query.getResultList();				
 	}
 	
 	/** 

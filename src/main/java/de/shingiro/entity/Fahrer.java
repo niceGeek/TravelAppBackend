@@ -4,13 +4,13 @@
 package de.shingiro.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
@@ -24,9 +24,10 @@ import javax.validation.constraints.Size;
  *
  */
 @Entity
-@NamedQueries({ 
-	@NamedQuery(name = "Fahrer.findAll", query = "SELECT f FROM Fahrer f"),
-	@NamedQuery(name = "Fahrer.findById", query = "SELECT f FROM Fahrer f WHERE f.fahrerId = :fahrerId") })
+@NamedQueries({ @NamedQuery(name = "Fahrer.findAll", query = "SELECT f FROM Fahrer f"),
+		@NamedQuery(name = "Fahrer.findById", query = "SELECT f FROM Fahrer f WHERE f.fahrerId = :fahrerId"),
+		@NamedQuery(name = "Fahrer.findByReqParams", query = "SELECT f FROM Fahrer f WHERE f.abfahrtsort = :abfahrtsort "
+				+ "AND f.ankunftsort = :ankunftsort AND f.abfahrtzeit = :abfahrtzeit") })
 public class Fahrer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,6 +35,8 @@ public class Fahrer implements Serializable {
 	public static final String FIND_ALL = "Fahrer.findAll";
 
 	public static final String FIND_BY_ID = "Fahrer.findById";
+	
+	public static final String FIND_BY_REQ_PARAMS = "Fahrer.findByReqParams";
 
 	public Fahrer() {
 
@@ -41,7 +44,7 @@ public class Fahrer implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fahrerSeq")
-	@SequenceGenerator(name="fahrerSeq", sequenceName = "fahrerSeq", initialValue = 1, allocationSize = 100)
+	@SequenceGenerator(name = "fahrerSeq", sequenceName = "fahrerSeq", initialValue = 1, allocationSize = 100)
 	private Long fahrerId;
 
 	@NotNull
@@ -57,10 +60,13 @@ public class Fahrer implements Serializable {
 	private String nachricht;
 
 	@NotNull
-	private String abfahrtzeit;
+	private String abfahrtsort;
 
-	@ManyToOne
-	private Fahrt fahrt;
+	@NotNull
+	private String ankunftsort;
+
+	@NotNull
+	private Date abfahrtzeit;
 
 	public Long getFahrerId() {
 		return fahrerId;
@@ -102,20 +108,28 @@ public class Fahrer implements Serializable {
 		this.nachricht = nachricht;
 	}
 
-	public String getAbfahrtzeit() {
+	public String getAbfahrtsort() {
+		return abfahrtsort;
+	}
+
+	public void setAbfahrtsort(String abfahrtsort) {
+		this.abfahrtsort = abfahrtsort;
+	}
+
+	public String getAnkunftsort() {
+		return ankunftsort;
+	}
+
+	public void setAnkunftsort(String ankunftsort) {
+		this.ankunftsort = ankunftsort;
+	}
+
+	public Date getAbfahrtzeit() {
 		return abfahrtzeit;
 	}
 
-	public void setAbfahrtzeit(String abfahrtzeit) {
+	public void setAbfahrtzeit(Date abfahrtzeit) {
 		this.abfahrtzeit = abfahrtzeit;
-	}
-
-	public Fahrt getFahrt() {
-		return fahrt;
-	}
-
-	public void setFahrt(Fahrt fahrt) {
-		this.fahrt = fahrt;
 	}
 
 	public static long getSerialversionuid() {
@@ -127,8 +141,9 @@ public class Fahrer implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((abfahrtzeit == null) ? 0 : abfahrtzeit.hashCode());
+		result = prime * result + ((abfahrtsort == null) ? 0 : abfahrtsort.hashCode());
+		result = prime * result + ((ankunftsort == null) ? 0 : ankunftsort.hashCode());
 		result = prime * result + ((fahrerId == null) ? 0 : fahrerId.hashCode());
-		result = prime * result + ((fahrt == null) ? 0 : fahrt.hashCode());
 		result = prime * result + ((nachname == null) ? 0 : nachname.hashCode());
 		result = prime * result + ((nachricht == null) ? 0 : nachricht.hashCode());
 		result = prime * result + ((telefonnummer == null) ? 0 : telefonnummer.hashCode());
@@ -150,15 +165,20 @@ public class Fahrer implements Serializable {
 				return false;
 		} else if (!abfahrtzeit.equals(other.abfahrtzeit))
 			return false;
+		if (abfahrtsort == null) {
+			if (other.abfahrtsort != null)
+				return false;
+		} else if (!abfahrtsort.equals(other.abfahrtsort))
+			return false;
+		if (ankunftsort == null) {
+			if (other.ankunftsort != null)
+				return false;
+		} else if (!ankunftsort.equals(other.ankunftsort))
+			return false;
 		if (fahrerId == null) {
 			if (other.fahrerId != null)
 				return false;
 		} else if (!fahrerId.equals(other.fahrerId))
-			return false;
-		if (fahrt == null) {
-			if (other.fahrt != null)
-				return false;
-		} else if (!fahrt.equals(other.fahrt))
 			return false;
 		if (nachname == null) {
 			if (other.nachname != null)

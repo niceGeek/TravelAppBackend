@@ -43,6 +43,5 @@ public class FahrtResource {
 	public List<Fahrt> findeAlleFahrten() {
 		return fahrtService.findFahrten();
 	}
-	
 
 }
