@@ -12,7 +12,6 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import de.shingiro.entity.Fahrer;
@@ -71,11 +70,10 @@ public class FahrerBean implements FahrerService {
 	 * 
 	 * @return Fahrer the corresponding driver
 	 */
-	public List<Fahrer> getFahrerByParams(String abfahrtsort, String ankunftsort, Date abfahrtszeit) {
+	public List<Fahrer> getFahrerByParams(String abfahrtsort, String ankunftsort) {
 		TypedQuery<Fahrer> query = entityManager.createNamedQuery(Fahrer.FIND_BY_REQ_PARAMS, Fahrer.class)
 									 .setParameter("abfahrtsort", abfahrtsort)
-									 .setParameter("ankunftsort", ankunftsort)
-									 .setParameter("abfahrtszeit", abfahrtszeit);
+									 .setParameter("ankunftsort", ankunftsort);
 		return query.getResultList();				
 	}
 	

@@ -25,7 +25,7 @@ public interface FahrerService {
 	public @NotNull Fahrer createFahrer(@NotNull Fahrer fahrer);
 	
 	public List<Fahrer> getFahrerByParams(@NotNull String abfahrtsort, 
-			@NotNull String ankunftsort, @NotNull Date abfahrtszeit);
+			@NotNull String ankunftsort);
 	
 	public void deleteFahrer(@NotNull Fahrer fahrerId);
 

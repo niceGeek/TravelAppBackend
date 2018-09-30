@@ -27,7 +27,7 @@ import javax.validation.constraints.Size;
 @NamedQueries({ @NamedQuery(name = "Fahrer.findAll", query = "SELECT f FROM Fahrer f"),
 		@NamedQuery(name = "Fahrer.findById", query = "SELECT f FROM Fahrer f WHERE f.fahrerId = :fahrerId"),
 		@NamedQuery(name = "Fahrer.findByReqParams", query = "SELECT f FROM Fahrer f WHERE f.abfahrtsort = :abfahrtsort "
-				+ "AND f.ankunftsort = :ankunftsort AND f.abfahrtszeit = :abfahrtszeit") })
+				+ "AND f.ankunftsort = :ankunftsort") })
 public class Fahrer implements Serializable {
 
 	private static final long serialVersionUID = 1L;

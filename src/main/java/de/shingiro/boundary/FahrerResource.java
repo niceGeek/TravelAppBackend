@@ -81,8 +81,8 @@ public class FahrerResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/findeFahrt")
 	public List<Fahrer> getFahrerByParams(@QueryParam("abfahrtsort") String abfahrtsort, 
-			@QueryParam("ankunftsort") String ankunftsort, @QueryParam("abfahrtszeit") Date abfahrtszeit) {
-		return fahrerService.getFahrerByParams(abfahrtsort, ankunftsort, abfahrtszeit);
+			@QueryParam("ankunftsort") String ankunftsort) {
+		return fahrerService.getFahrerByParams(abfahrtsort, ankunftsort);
 	}
 
 //	
