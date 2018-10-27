@@ -63,11 +63,9 @@ public class FahrerBean implements FahrerService {
 	}
 	
 	/**
-	 * Fetch datasets from DB using many request parameters
+	 * Fetch data sets from DB using many request parameters
 	 * @param abfahrtsort departure
 	 * @param ankunftsort destination
-	 * @param abfahrtszeit date and time
-	 * 
 	 * @return Fahrer the corresponding driver
 	 */
 	public List<Fahrer> getFahrerByParams(String abfahrtsort, String ankunftsort) {

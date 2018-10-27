@@ -79,10 +79,11 @@ public class FahrerResource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/findeFahrt")
-	public List<Fahrer> getFahrerByParams(@QueryParam("abfahrtsort") String abfahrtsort, 
+	@Path("/findeFahrer")
+	public Response getFahrerByParams(@QueryParam("abfahrtsort") String abfahrtsort, 
 			@QueryParam("ankunftsort") String ankunftsort) {
-		return fahrerService.getFahrerByParams(abfahrtsort, ankunftsort);
+		List<Fahrer> fahrerListe = fahrerService.getFahrerByParams(abfahrtsort, ankunftsort); 
+		return Response.status(Status.OK).entity(fahrerListe).build();
 	}
 
 //	
