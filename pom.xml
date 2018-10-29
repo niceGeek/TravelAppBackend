@@ -9,13 +9,13 @@
 	<name>travel-app-backend</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-	<!-- Defining properties -->
-	<maven-plugin-version>10.3.4</maven-plugin-version>
-	<openpojo-version>0.8.10</openpojo-version>
-	<equalsverifier-version>2.4.6</equalsverifier-version>
-	<junit-version>4.11</junit-version>
-	<eclipselink-version>2.5.0</eclipselink-version>
-	<jackson-version>2.9.6</jackson-version>
+		<!-- Defining properties -->
+		<maven-plugin-version>10.3.4</maven-plugin-version>
+		<openpojo-version>0.8.10</openpojo-version>
+		<equalsverifier-version>2.4.6</equalsverifier-version>
+		<junit-version>4.11</junit-version>
+		<eclipselink-version>2.5.0</eclipselink-version>
+		<jackson-version>2.9.6</jackson-version>
 	</properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
@@ -95,21 +95,22 @@
 					<artifactId>weblogic-maven-plugin</artifactId>
 					<version>${maven-plugin-version}</version>
 					<configuration>
-						<adminurl>t3://localhost:7001</adminurl>
-						<user>weblogic</user>
-						<password>Ra$pdiggy1</password>
+						<adminurl>${weblogic.adminurl}</adminurl>
+						<targets>${weblogic.target}</targets>
+						<user>${weblogic.user}</user>
+						<password>${weblogic.password}</password>
 						<upload>true</upload>
-						<action>deploy</action>
+						<action>redeploy</action>
 						<remote>false</remote>
 						<verbose>true</verbose>
-						<source>../target/travel-app-backend-1.0.war</source>
+						<source>./target/travel-app-backend-1.0.war</source>
 						<name>travel-app-backend</name>
 					</configuration>
 					<executions>
 						<execution>
 							<phase>install</phase>
 							<goals>
-								<goal>deploy</goal>
+								<goal>redeploy</goal>
 							</goals>
 						</execution>
 					</executions>
@@ -144,4 +145,19 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<profiles>
+		<profile>
+			<id>deploy-wls</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<weblogic.adminurl>t3://192.168.1.21:7001</weblogic.adminurl>
+				<weblogic.target>AdminServer</weblogic.target>
+				<weblogic.user>weblogic</weblogic.user>
+				<weblogic.password>Ra$pdiggy1</weblogic.password>
+				<weblogic.serverurl>http://192.168.1.21:7001</weblogic.serverurl>
+			</properties>
+		</profile>
+	</profiles>
 </project>
