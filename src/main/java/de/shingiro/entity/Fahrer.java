@@ -24,7 +24,7 @@ import javax.validation.constraints.Size;
  *
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = "Fahrer.findAll", query = "SELECT f FROM Fahrer f"),
+@NamedQueries({@NamedQuery(name = "Fahrer.findAll", query = "SELECT f FROM Fahrer f"),
 		@NamedQuery(name = "Fahrer.findById", query = "SELECT f FROM Fahrer f WHERE f.fahrerId = :fahrerId"),
 		@NamedQuery(name = "Fahrer.findByReqParams", query = "SELECT f FROM Fahrer f WHERE f.abfahrtsort = :abfahrtsort "
 				+ "AND f.ankunftsort = :ankunftsort") })
