@@ -3,7 +3,6 @@
  */
 package de.shingiro.boundary;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.security.RolesAllowed;
