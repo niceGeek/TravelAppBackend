@@ -1,7 +1,4 @@
-/**
- * 
- */
-package de.shingiro.boundary;
+package de.shingiro.control;
 
 import java.util.List;
 
@@ -13,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import de.shingiro.boundary.FahrerService;
 import de.shingiro.entity.Fahrer;
 
 /**
