@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.shingiro.boundary;
+package de.shingiro.control;
 
 import java.util.List;
 
@@ -13,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.validation.constraints.NotNull;
 
+import de.shingiro.boundary.FahrtService;
 import de.shingiro.entity.Fahrt;
 
 /**
