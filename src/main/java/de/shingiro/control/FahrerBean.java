@@ -64,6 +64,7 @@ public class FahrerBean implements FahrerService {
 	 * @param abfahrtsort departure
 	 * @param ankunftsort destination
 	 * @return Fahrer the corresponding driver
+	 * TODO: add time attribute
 	 */
 	public List<Fahrer> getFahrerByParams(String abfahrtsort, String ankunftsort) {
 		TypedQuery<Fahrer> query = entityManager.createNamedQuery(Fahrer.FIND_BY_REQ_PARAMS, Fahrer.class)
