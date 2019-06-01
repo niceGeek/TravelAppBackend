@@ -10,8 +10,12 @@ import java.util.function.ToIntFunction;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
+import de.shingiro.control.FahrerBean;
+import de.shingiro.control.FahrtBean;
 import de.shingiro.entity.Fahrer;
+import de.shingiro.entity.Fahrt;
 
 
 /**
@@ -24,8 +28,8 @@ public class App
 	public static void main( String[] args ) {
     	
 		
-    	//EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("KIWIDB");
-    	//EntityManager em = emFactory.createEntityManager();
+    	EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("travelAppDB");
+    	EntityManager em = emFactory.createEntityManager();
     	/*
     	// Populate the database
     	Kind femaleKind = new Kind();
@@ -58,11 +62,14 @@ public class App
     	*/
 	
     	// DB fetch
-    	/*
-    	List<Kind> kinder = em.createNamedQuery("Kind.FIND_ALL", Kind.class).getResultList();
-    	kinder.stream().forEach(entity -> System.out.println("Familienname: " + entity.getFamilienname()));
-    	*/
-		
+    	
+//    	List<Kind> kinder = em.createNamedQuery("Kind.FIND_ALL", Kind.class).getResultList();
+//    	kinder.stream().forEach(entity -> System.out.println("Familienname: " + entity.getFamilienname()));
+    	
+    	em.getTransaction().begin();
+    	List<Fahrer> fahrten = em.createNamedQuery(Fahrer.FIND_ALL, Fahrer.class).getResultList();
+//    	List<Fahrt> fahrten = new FahrtBean().findFahrten();
+    	fahrten.stream().forEach(ride -> System.out.println(ride));
 //		@Inject
 //		private FahrerBean bean;
 		

@@ -35,7 +35,8 @@ public class FahrtBean implements FahrtService {
 
 	@Override
 	public List<Fahrt> findFahrten() {
-		TypedQuery<Fahrt> alleFahrten = entityManager.createNamedQuery(Fahrt.FIND_ALL, Fahrt.class);
+		TypedQuery<Fahrt> alleFahrten = 
+				entityManager.createNamedQuery(Fahrt.FIND_ALL, Fahrt.class);
 		return alleFahrten.getResultList();
 	}
 
