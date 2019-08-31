@@ -5,5 +5,5 @@
  *
  */
 public class FahrerBeanTest {
-	
+		assertTrue(true);
 	}
