@@ -4,6 +4,7 @@
 package de.shingiro;
 
 /**
+ * Enum class representing all available cities
  * @author angedesires
  *
  */
